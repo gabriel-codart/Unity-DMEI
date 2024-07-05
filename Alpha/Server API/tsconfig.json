@@ -2,11 +2,15 @@
     "compilerOptions": {
       "target": "es6",
       "module": "ESNext",
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowImportingTsExtensions": true,
+      "noEmit": true,
       "allowSyntheticDefaultImports": true,
       "rootDir": "./src",
       "strict": true
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/swagger.ts"],
     "exclude": ["node_modules"]
 }

@@ -3,6 +3,8 @@ import db from '../config/db';
 
 // Controlador para obter todos as entidades
 export const getAll = (req: Request, res: Response) => {
+  // #swagger.tags = ['Entity']
+
   db.query("SELECT * FROM entity",
   (error,result)=>{
     if(error) {
@@ -17,6 +19,8 @@ export const getAll = (req: Request, res: Response) => {
 
 // Controlador para obter uma entidade pelo ID
 export const getById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Entity']
+
   const id = Number(req.params.id);
 
   db.query(`SELECT * FROM entity WHERE id = ?`, id, 
@@ -33,6 +37,8 @@ export const getById = (req: Request, res: Response) => {
 
 // Controlador para criar uma nova entidade
 export const create = (req: Request, res: Response) => {
+  // #swagger.tags = ['Entity']
+
   const { code, name, phone, name_manager, phone_manager, id_zone_adress,  district_adress, cep_adress, street_adress, number_adress, is_internal } = req.body;
 
   db.query("INSERT INTO entity (code, name, phone, name_manager, phone_manager, id_zone_adress, district_adress, cep_adress, street_adress, number_adress, is_internal) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
@@ -50,6 +56,8 @@ export const create = (req: Request, res: Response) => {
 
 // Controlador para atualizar uma entidade pelo ID
 export const updateById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Entity']
+
   const id = Number(req.params.id);
   const { code, name, phone, name_manager, phone_manager, id_zone_adress,  district_adress, cep_adress, street_adress, number_adress, is_internal } = req.body;
 
@@ -68,6 +76,8 @@ export const updateById = (req: Request, res: Response) => {
 
 // Controlador para excluir uma entidade pelo ID
 export const deleteById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Entity']
+  
   const id = Number(req.params.id);
 
   db.query("DELETE FROM entity WHERE id = ?", id,

@@ -3,6 +3,8 @@ import db from '../config/db';
 
 // Controlador para obter todos as serviços
 export const getAll = (req: Request, res: Response) => {
+  // #swagger.tags = ['Service']
+
   db.query("SELECT * FROM service",
   (error,result)=>{
     if(error) {
@@ -17,6 +19,8 @@ export const getAll = (req: Request, res: Response) => {
 
 // Controlador para obter uma serviço pelo ID
 export const getById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Service']
+
   const { num_id, year_id } = req.params;
 
   db.query(`SELECT * FROM service WHERE num_id LIKE ? AND year_id LIKE ?`,
@@ -34,8 +38,9 @@ export const getById = (req: Request, res: Response) => {
 
 // Controlador para criar uma nova serviço
 export const create = (req: Request, res: Response) => {
-  const { id_entity, name_requester, phone_requester, problem, created_by, devices } = req.body;
+  // #swagger.tags = ['Service']
 
+  const { id_entity, name_requester, phone_requester, problem, created_by, devices } = req.body;
   const currentYear = new Date().getFullYear();
 
   db.query("SELECT MAX(num_id) AS max_num_id FROM service WHERE year_id = ?", [currentYear], (error, result) => {
@@ -94,6 +99,8 @@ export const create = (req: Request, res: Response) => {
 
 // Controlador para atualizar uma serviço pelo ID
 export const updateById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Service']
+
   const { num_id, year_id } = req.params;
   const { name_requester, phone_requester, problem, summary } = req.body;
 
@@ -112,6 +119,8 @@ export const updateById = (req: Request, res: Response) => {
 
 // Controlador para finalizar uma serviço pelo ID
 export const finalizeById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Service']
+
   const { num_id, year_id } = req.params;
   const { summary, users } = req.body;
 
@@ -161,6 +170,8 @@ export const finalizeById = (req: Request, res: Response) => {
 
 // Controlador para excluir uma serviço pelo ID
 export const deleteById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Service']
+  
   const { num_id, year_id } = req.params;
 
   // Array de promessas para cada exclusão

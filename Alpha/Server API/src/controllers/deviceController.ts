@@ -3,6 +3,8 @@ import db from '../config/db';
 
 // Controlador para obter todos os dispositivos
 export const getAll = (req: Request, res: Response) => {
+  // #swagger.tags = ['Device']
+
   db.query("SELECT * FROM device",
   (error,result)=>{
     if(error) {
@@ -17,6 +19,8 @@ export const getAll = (req: Request, res: Response) => {
 
 // Controlador para obter um dispositivo pelo ID
 export const getById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Device']
+
   const id = Number(req.params.id);
 
   db.query(`SELECT * FROM device WHERE id = ?`, id, 
@@ -33,6 +37,8 @@ export const getById = (req: Request, res: Response) => {
 
 // Controlador para criar uma novo dispositivo
 export const create = (req: Request, res: Response) => {
+  // #swagger.tags = ['Device']
+
   const { num_serial, model, id_type, description, id_entity, is_active } = req.body;
 
   db.query("INSERT INTO device (num_serial, model, id_type, description, id_entity, is_active) VALUES (?,?,?,?,?,?)",
@@ -50,6 +56,8 @@ export const create = (req: Request, res: Response) => {
 
 // Controlador para atualizar um novo dispositivo pelo ID
 export const updateById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Device']
+
   const id = Number(req.params.id);
   const { num_serial, model, id_type, description, id_entity, is_active } = req.body;
 
@@ -68,6 +76,8 @@ export const updateById = (req: Request, res: Response) => {
 
 // Controlador para excluir um dispositivo pelo ID
 export const deleteById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Device']
+  
   const id = Number(req.params.id);
 
   db.query("DELETE FROM device WHERE id = ?", id,

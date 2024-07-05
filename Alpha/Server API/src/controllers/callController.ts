@@ -3,6 +3,8 @@ import db from '../config/db';
 
 // Controlador para obter todos os chamados
 export const getAll = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+
   db.query("SELECT * FROM `call`",
   (error,result)=>{
     if(error) {
@@ -17,6 +19,8 @@ export const getAll = (req: Request, res: Response) => {
 
 // Controlador para obter um chamado pelo id
 export const getById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+
   const { num_id, year_id } = req.params;
 
   db.query("SELECT * FROM `call` WHERE num_id LIKE ? AND year_id LIKE ?",
@@ -50,6 +54,8 @@ function addDevices(num_id: string, year_id: string, devices: []) {
 
 // Controlador para criar um novo chamado
 export const create = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+
   const { is_internal, id_entity, name_requester, phone_requester, problem, created_by, schedule_at, devices } = req.body;
 
   const currentYear = new Date().getFullYear();
@@ -110,6 +116,8 @@ export const create = (req: Request, res: Response) => {
 
 // Controlador para atualizar um chamado pelo ID
 export const updateById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+
   const { num_id, year_id } = req.params;
   const { is_internal, id_entity, name_requester, phone_requester, problem, summary, doc_path, created_by, created_at, schedule_at, ended_at, is_closed } = req.body;
 
@@ -128,6 +136,8 @@ export const updateById = (req: Request, res: Response) => {
 
 // Controlador para finalizar um chamado pelo ID
 export const finalizeById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+
   const { num_id, year_id } = req.params;
   const { summary, devices, users } = req.body;
   
@@ -192,6 +202,8 @@ export const finalizeById = (req: Request, res: Response) => {
 
 // Controlador para excluir um chamado pelo ID
 export const deleteById = (req: Request, res: Response) => {
+  // #swagger.tags = ['Call']
+  
   const { num_id, year_id } = req.params;
 
   // Array de promessas para cada exclusão
