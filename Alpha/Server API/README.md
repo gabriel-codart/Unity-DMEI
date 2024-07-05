@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Chamados - API
+# Unity - API
 
 Esta é uma API desenvolvida em TypeScript para gerenciar chamados de um setor de suporte de TI. Ela oferece funcionalidades que vão desde a criação de contas e login até o registro e gerenciamento de serviços.
 
